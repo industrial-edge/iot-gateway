@@ -22,12 +22,11 @@ This example demonstrates how to use the Industrial Edge System Apps to read dat
 
 ### Overview
 
-![iot gateway overview](./docs/graphics/iot-gateway-overview.png)
+ <a href="docs/graphics/iot-gateway-overview.png"><img src="docs/graphics/iot-gateway-overview.png" height="70%" width="70%" ></a> 
+  <br>
 
 The SIMATIC S7 Connector is used to read status data from the PLC in a 100ms cycle and publishes it to the IE Databus
-
 The IE Flow Creator is used to read the data and calculate the flow in m3/min and publish it back to the IE Databus
-
 The IE Cloud Connector then reads this preprocessed data and publishes it to the AWS cloud.
 
 ### General task
