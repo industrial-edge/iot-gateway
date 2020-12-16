@@ -23,7 +23,10 @@ To set up a user with publish and subscribe permission, open the IE Databus Conf
 
 ### Setting up the SIMATIC S7 Connector
 
-Open the SIMATIC S7 Connector Configurator and add your PLC. Browse the tags and select  `GDB_externalSignals_tankSignals_actLevel` with a 100ms aquisition cycle.
+- Open the SIMATIC S7 Connector Configurator
+- Enter the IE Databus User and Password in the Settings. "Bulk Publish" must be deactivated.
+- Add your PLC as a data source
+- Browse the tags and select  `GDB_externalSignals_tankSignals_actLevel` with a 100ms aquisition cycle.
 
 ![iot gateway S7 connector setup](./graphics/iot-gateway-s7connector-setup.png)
 
