@@ -45,6 +45,7 @@ To set up this example, the IE Databus, the SIMATIC S7 Connector and the IE Clou
 - IE Cloud Connector Configurator V 1.0.9
 - IE Flow Creator V 1.0.3
 - Industrial Edge Device V 1.0.0-34
+- Industrial Edge Management System V 1.0.11
 - PLC: CPU 1511 FW 2.8.3
 
 ### Further requirements
