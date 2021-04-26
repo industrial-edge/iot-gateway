@@ -1,12 +1,15 @@
-  * [Setting up the IE Databus](#setting-up-the-ie-databus)
-  * [Setting up the SIMATIC S7 Connector](#setting-up-the-simatic-s7-connector)
-  * [Setting up the Connection to the cloud](#setting-up-the-connection-to-the-cloud)
-    + [Creating a new policy for the aws IoT device](#creating-a-new-policy-for-the-aws-iot-device)
-    + [Creating a aws IoT Thing](#creating-a-aws-iot-thing)
-    + [Setting up the IE Cloud Connector](#setting-up-the-ie-cloud-connector)
-    + [Testing the Cloud Connector Configuration](#testing-the-cloud-connector-configuration)
+# Installation
 
-### Setting up the IE Databus
+- [Installation](#installation)
+  - [Setting up the IE Databus](#setting-up-the-ie-databus)
+  - [Setting up the SIMATIC S7 Connector](#setting-up-the-simatic-s7-connector)
+  - [Setting up the Connection to the cloud](#setting-up-the-connection-to-the-cloud)
+    - [Creating a new policy for the aws IoT device](#creating-a-new-policy-for-the-aws-iot-device)
+    - [Creating a aws IoT Thing](#creating-a-aws-iot-thing)
+    - [Setting up the IE Cloud Connector](#setting-up-the-ie-cloud-connector)
+    - [Testing the Connection to the cloud](#testing-the-connection-to-the-cloud)
+
+## Setting up the IE Databus
 
 In this example, two topics on the IE Databus are used.
 
@@ -21,7 +24,7 @@ To set up a user with publish and subscribe permission, open the IE Databus Conf
 
 ![iot gateway databus setup](./graphics/iot-gateway-databus-setup.png)
 
-### Setting up the SIMATIC S7 Connector
+## Setting up the SIMATIC S7 Connector
 
 - Open the SIMATIC S7 Connector Configurator
 - Enter the IE Databus User and Password in the Settings. "Bulk Publish" must be deactivated.
@@ -30,11 +33,11 @@ To set up a user with publish and subscribe permission, open the IE Databus Conf
 
 ![iot gateway S7 connector setup](./graphics/iot-gateway-s7connector-setup.png)
 
-### Setting up the Connection to the cloud
+## Setting up the Connection to the cloud
 
 Before starting the IE Cloud Connector Configurator, a new policy and a new device have to be set up in the aws IoT management console.
 
-#### Creating a new policy for the aws IoT device
+### Creating a new policy for the aws IoT device
 
 In the aws IoT management console:
 
@@ -50,7 +53,7 @@ The policy has been created successfully
 
 ![aws new policy](./graphics/iot-gateway-aws-new-policy.gif)
 
-#### Creating a aws IoT Thing
+### Creating a aws IoT Thing
 
 In the aws IoT management console:
 
@@ -67,7 +70,7 @@ The thing has been registered successfully
 
 ![aws new policy](./graphics/iot-gateway-aws-new-device.gif)
 
-#### Setting up the IE Cloud Connector
+### Setting up the IE Cloud Connector
 
 Now that a IoT device is created in the aws cloud, the IE Cloud Connector can be set up.
 
@@ -102,7 +105,7 @@ The last part is to configure the cloud connector client
 Now every data published to the bus adaptor topic of the IE Databus will get published to the aws cloud.
 E.g. data published to the topic `CloudConnectot/toAWS` in the IE Databus will get published to the topic `CloudConnector/` of the aws IoT thing. The publish topic to which the IE Cloud Connector will publish the data in the aws cloud is set in the "Advanced" Tab of the IE Cloud Connector Client settings, the default value is `CloudConnector/`
 
-#### Testing the Connection to the cloud
+### Testing the Connection to the cloud
 
 In the AWS IoT management console:
 
