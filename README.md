@@ -50,7 +50,7 @@ To set up this example, the IE Databus, the SIMATIC S7 Connector and the IE Clou
 
 ### Further requirements
 
-- The Bottle filling example project is loaded to a PLC on which a OPCUA server is running.
+- The Bottle filling example project is loaded to a PLC on which a OPC-UA server is running.
 - The minimum publishing interval and sampling interval of the OPC UA server of the PLC is set to 100ms
 - SIMATIC S7 Connector is installed on the industrial edge device (IED)
 - IE Cloud Connector is installed on the IED
@@ -59,9 +59,9 @@ To set up this example, the IE Databus, the SIMATIC S7 Connector and the IE Clou
 
 ### TIA Project
 
-The used TIA Portal project can be found in the [miscellenous repository](https://github.com/industrial-edge/miscellaneous/tree/main/tank%20application) under the following name and is also used for several further application examples:
+The used TIA Portal project can be found in the [miscellaneous repository](https://github.com/industrial-edge/miscellaneous) in the tank application folder and is also used for several further application examples:
 
-- [tia-tank-application.7z](https://github.com/industrial-edge/miscellaneous/blob/main/tank%20application/tia-tank-application.7z)
+- [Tia Tank Application](https://github.com/industrial-edge/miscellaneous/tree/main/tank%20application)
 
 ## Installation
 
@@ -69,14 +69,14 @@ Please refer to the [Installation](./docs/Installation.md) documentation
 
 ## Usage
 
-To publish preprocessed data of the PLC to the cloud, the IE Flow Creator is used to receive the data published to the databus by the SIMATIC S7 Connector, prepocess it and publish the result to the topic the IE Cloud Connector is listening to.
+To publish preprocessed data of the PLC to the cloud, the IE Flow Creator is used to receive the data published to the databus by the SIMATIC S7 Connector, preprocess it and publish the result to the topic the IE Cloud Connector is listening to.
 
-In the bottlefilling and the following flow, the filling level of the tank is used to calculate the flowrate of the tank filling wich is then published to the aws IoT thing.
+In the bottle filling and the following flow, the filling level of the tank is used to calculate the flowrate of the tank filling which is then published to the aws IoT thing.
 Configure the IE System Applications according to the [Installation](./docs/Installation.md) documentation and deploy the provided [flow](./src/iotGateway-flow.json) into the IE Flow creator. Before deploying the flow enter the user credentials configured in IE Databus in the MQTT-Node.
 
 ![bottlefilling example](./docs/graphics/iot-gateway-flow.png)
 
-Start the flow and the PLC Programm. The calculated flowrate is now visible in the aws IoT management console:
+Start the flow and the PLC Program. The calculated flowrate is now visible in the aws IoT management console:
 
 ![aws result flowrate](./docs/graphics/iot-gateway-aws-console-flowrate.png
 )
@@ -91,7 +91,7 @@ You can find the flow [here](./src/iotGateway-flow.json)
   
 ## Contribution
 
-Thanks for your interest in contributing. Anybody is free to report bugs, unclear documenation, and other problems regarding this repository in the Issues section or, even better, is free to propose any changes to this repository using Merge Requests.
+Thanks for your interest in contributing. Anybody is free to report bugs, unclear documentation, and other problems regarding this repository in the Issues section or, even better, is free to propose any changes to this repository using Merge Requests.
 
 ## Licence and Legal Information
 
