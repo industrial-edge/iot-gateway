@@ -37,7 +37,7 @@ To set up this example, the IE Databus, the SIMATIC S7 Connector and the IE Clou
 
 ### Used components
 
-- SIMATIC S7 Connector V 1.0.22
+- SIMATIC S7 Connector V 1.0.17
 - SIMATIC S7 Connector Configurator V 1.0.9
 - IE Databus V 1.0.11
 - IE Databus Configurator V 1.0.44
