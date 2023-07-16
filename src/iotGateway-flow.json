@@ -11,7 +11,7 @@
         "type": "mqtt in",
         "z": "9a3fe20a.8572d",
         "name": "",
-        "topic": "ie/d/j/simatic/v1/s7c1/dp/r/plc1/tankLevel",
+        "topic": "ie/d/j/simatic/v1/opcuac1/dp/r/plc1/tankLevel",
         "qos": "2",
         "datatype": "auto",
         "broker": "f9797e4b.7d9c9",
