@@ -1,20 +1,20 @@
 # Installation
 
 - [Installation](#installation)
-  - [Setting up the IE Databus](#setting-up-the-ie-databus)
-  - [Setting up the SIMATIC S7 Connector](#setting-up-the-simatic-s7-connector)
+  - [Setting up the Databus](#setting-up-the-databus)
+  - [Setting up the OPC UA Connector](#setting-up-the-opc-ua-connector)
   - [Setting up the Connection to the cloud](#setting-up-the-connection-to-the-cloud)
     - [Creating a new policy for the aws IoT device](#creating-a-new-policy-for-the-aws-iot-device)
     - [Creating a aws IoT Thing](#creating-a-aws-iot-thing)
     - [Setting up the IE Cloud Connector](#setting-up-the-ie-cloud-connector)
     - [Testing the Connection to the cloud](#testing-the-connection-to-the-cloud)
 
-## Setting up the IE Databus
+## Setting up the Databus
 
 In this example, two topics on the IE Databus are used.
 
-The fist one is used by the SIMATIC S7 Connector to publish the data read from the PLC:
-For example: `ie/d/j/simatic/v1/s7c1/dp/r/plc1/tankLevel`
+The fist one is used by the OPC UA Connector to publish the data read from the PLC:
+For example: `ie/d/j/simatic/v1/opcuac1/dp/r/plc1/tankLevel`
 
 The second is used by the IE Cloud Connector to receive data which will then be published to the cloud.
 For example: `CloudConnector/toAWS`
@@ -23,10 +23,10 @@ To set up a user with publish and subscribe permission, open the IE Databus Conf
 
 ![iot gateway databus setup](./graphics/iot-gateway-databus-setup.png)
 
-## Setting up the SIMATIC S7 Connector
+## Setting up the OPC UA Connector
 
-- Open the SIMATIC S7 Connector Configurator
-- Enter the IE Databus User and Password in the Settings. "Bulk Publish" must be deactivated.
+- Open the OPC UA Connector Configurator
+- Enter the Databus User and Password in the Settings. "Bulk Publish" must be deactivated.
 - Add your PLC as a data source
 - Browse the tags and select  `GDB_externalSignals_tankSignals_actLevel` with a 100ms acquisition cycle.
 

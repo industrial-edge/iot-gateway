@@ -15,6 +15,7 @@ Using the IE system apps to preprocess PLC data and push it to the cloud
   - [Documentation](#documentation)
   - [Contribution](#contribution)
   - [Licence and Legal Information](#licence-and-legal-information)
+  - [Disclaimer](#disclaimer)
 
 ## Description
 
@@ -37,15 +38,15 @@ To set up this example, the IE Databus, the SIMATIC S7 Connector and the IE Clou
 
 ### Used components
 
-- SIMATIC S7 Connector V 1.0.17
-- SIMATIC S7 Connector Configurator V 1.0.9
-- IE Databus V 1.0.11
-- IE Databus Configurator V 1.0.44
-- IE Cloud Connector V 1.0.15
-- IE Cloud Connector Configurator V 1.0.9
-- IE Flow Creator V 1.0.3
-- Industrial Edge Device V 1.0.0-34
-- Industrial Edge Management System V 1.0.11
+- Industrial Edge Management (IEM) V1.5.2-4 / V1.11.8
+  - Databus Configurator V2.0.0-5
+  - Common Connector Configurator V1.8.1-4
+- Industrial Edge Device (IED) V1.10.0-9
+  - Databus V2.0.0-4
+  - OPC UA Connector V1.8.1
+- IE Cloud Connector V1.9.3-1
+- Data Service V 1.6.0
+- Flow Creator V 1.12.0-1
 - PLC: CPU 1511 FW 2.8.3
 
 ### Further requirements
@@ -83,19 +84,27 @@ Start the flow and the PLC Program. The calculated flowrate is now visible in th
 You can find the flow [here](./src/iotGateway-flow.json)
 
 ## Documentation
-  
-- You can find further documentation and help in the following links
-  - [Industrial Edge Hub](https://iehub.eu1.edge.siemens.cloud/#/documentation)
-  - [Industrial Edge Forum](https://www.siemens.com/industrial-edge-forum)
-  - [Industrial Edge landing page](https://new.siemens.com/global/en/products/automation/topic-areas/industrial-edge/simatic-edge.html)
-  
-## Contribution
 
+- You can find further documentation and help in the following links
+  - [Industrial Edge Hub]( https://iehub.eu1.edge.siemens.cloud/#/documentation)
+  - [Industrial Edge Forum]( https://forum.mendix.com/link/space/industrial-edge)
+  - [Industrial Edge landing page]( https://new.siemens.com/global/en/products/automation/topic-areas/industrial-edge/simatic-edge.html)
+  - [Industrial Edge GitHub page]( https://github.com/industrial-edge)
+  - [Industrial Edge documentation page]( https://docs.eu1.edge.siemens.cloud/index.html)
+ 
+## Contribution
+ 
 Thank you for your interest in contributing. Anybody is free to report bugs, unclear documentation, and other problems regarding this repository in the Issues section.
 Additionally everybody is free to propose any changes to this repository using Pull Requests.
-
+ 
 If you are interested in contributing via Pull Request, please check the [Contribution License Agreement](Siemens_CLA_1.1.pdf) and forward a signed copy to [industrialedge.industry@siemens.com](mailto:industrialedge.industry@siemens.com?subject=CLA%20Agreement%20Industrial-Edge).
-
-## Licence and Legal Information
-
-Please read the [Legal information](LICENSE.md).
+ 
+## License and Legal Information
+ 
+Please read the [Legal information](LICENSE.txt).
+ 
+## Disclaimer
+ 
+IMPORTANT - PLEASE READ CAREFULLY:
+ 
+This documentation describes how you can download and set up containers which consist of or contain third-party software. By following this documentation you agree that using such third-party software is done at your own discretion and risk. No advice or information, whether oral or written, obtained by you from us or from this documentation shall create any warranty for the third-party software. Additionally, by following these descriptions or using the contents of this documentation, you agree that you are responsible for complying with all third party licenses applicable to such third-party software. All product names, logos, and brands are property of their respective owners. All third-party company, product and service names used in this documentation are for identification purposes only. Use of these names, logos, and brands does not imply endorsement.
