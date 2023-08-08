@@ -23,16 +23,16 @@ This example demonstrates how to use the Industrial Edge System Apps to read dat
 
 ### Overview
 
- <a href="docs/graphics/iot-gateway-overview.png"><img src="docs/graphics/iot-gateway-overview.png" height="70%" width="70%" ></a> 
+ <a href="docs/graphics/iot-gatewagit y-overview.png"><img src="docs/graphics/iot-gateway-overview.png" height="70%" width="70%" ></a> 
   <br>
 
 The SIMATIC S7 Connector is used to read status data from the PLC in a 100ms cycle and publishes it to the IE Databus
-The IE Flow Creator is used to read the data and calculate the flow in m3/min and publish it back to the IE Databus
-The IE Cloud Connector then reads this preprocessed data and publishes it to the AWS cloud.
+The Flow Creator is used to read the data and calculate the flow in m3/min and publish it back to the IE Databus
+The Cloud Connector then reads this preprocessed data and publishes it to the AWS cloud.
 
 ### General task
 
-To set up this example, the IE Databus, the SIMATIC S7 Connector and the IE Cloud Connector have to be configured.
+To set up this example, the IE Databus, the SIMATIC S7 Connector and the Cloud Connector have to be configured.
 
 ## Requirements
 
@@ -44,7 +44,7 @@ To set up this example, the IE Databus, the SIMATIC S7 Connector and the IE Clou
 - Industrial Edge Device (IED) V1.10.0-9
   - Databus V2.0.0-4
   - OPC UA Connector V1.8.1
-- IE Cloud Connector V1.9.3-1
+- Cloud Connector V1.9.3-1
 - Data Service V 1.6.0
 - Flow Creator V 1.12.0-1
 - PLC: CPU 1511 FW 2.8.3
@@ -54,8 +54,8 @@ To set up this example, the IE Databus, the SIMATIC S7 Connector and the IE Clou
 - The Bottle filling example project is loaded to a PLC on which a OPC-UA server is running.
 - The minimum publishing interval and sampling interval of the OPC UA server of the PLC is set to 100ms
 - SIMATIC S7 Connector is installed on the industrial edge device (IED)
-- IE Cloud Connector is installed on the IED
-- IE Flow Creator is installed on the IED
+- Cloud Connector is installed on the IED
+- Flow Creator is installed on the IED
 - Access to AWS with permission to create IoT Devices and policies
 
 ### TIA Project
@@ -70,7 +70,7 @@ Please refer to the [Installation](./docs/Installation.md) documentation
 
 ## Usage
 
-To publish preprocessed data of the PLC to the cloud, the IE Flow Creator is used to receive the data published to the databus by the SIMATIC S7 Connector, preprocess it and publish the result to the topic the IE Cloud Connector is listening to.
+To publish preprocessed data of the PLC to the cloud, the Flow Creator is used to receive the data published to the databus by the SIMATIC S7 Connector, preprocess it and publish the result to the topic the Cloud Connector is listening to.
 
 In the bottle filling and the following flow, the filling level of the tank is used to calculate the flowrate of the tank filling which is then published to the aws IoT thing.
 Configure the IE System Applications according to the [Installation](./docs/Installation.md) documentation and deploy the provided [flow](./src/iotGateway-flow.json) into the IE Flow creator. Before deploying the flow enter the user credentials configured in IE Databus in the MQTT-Node.

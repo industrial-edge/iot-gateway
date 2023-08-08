@@ -123,5 +123,7 @@ In the AWS IoT management console:
 - The data will be visible in the IoT management console
 
 ![iot gateway mqtt test](./graphics/iot-gateway-mqtt-test.png)
+
 ![iot gateway flowcreator](./graphics/iot-gateway-flowcreator.png)
+
 ![iot gateway mqtt dataflow](./graphics/iot-gateway-mqtt-dataflow.png)
