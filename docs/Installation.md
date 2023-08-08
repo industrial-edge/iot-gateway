@@ -4,9 +4,8 @@
   - [Setting up the Databus](#setting-up-the-databus)
   - [Setting up the OPC UA Connector](#setting-up-the-opc-ua-connector)
   - [Setting up the Connection to the cloud](#setting-up-the-connection-to-the-cloud)
-    - [Creating a new policy for the aws IoT device](#creating-a-new-policy-for-the-aws-iot-device)
-    - [Creating a aws IoT Thing](#creating-a-aws-iot-thing)
-    - [Setting up the IE Cloud Connector](#setting-up-the-ie-cloud-connector)
+    - [Creating a new policy and thing for the aws IoT device](#creating-a-new-policy-and-thing-for-the-aws-iot-device)
+    - [Setting up the Cloud Connector](#setting-up-the-cloud-connector)
     - [Testing the Connection to the cloud](#testing-the-connection-to-the-cloud)
 
 ## Setting up the Databus
@@ -34,72 +33,82 @@ To set up a user with publish and subscribe permission, open the IE Databus Conf
 
 ## Setting up the Connection to the cloud
 
-Before starting the IE Cloud Connector Configurator, a new policy and a new device have to be set up in the aws IoT management console.
+Before starting the Cloud Connector Configurator, a new policy and a new device have to be set up in the aws IoT management console.
 
-### Creating a new policy for the aws IoT device
-
-In the aws IoT management console:
-
-- navigate to "Secure" -> "Policies"
-- Click on "Create a Policy"
-- enter a name for the policy
-- in the "Action" text box, enter: `iot:Publish, iot:Connect`
-- in the "Resource ARN" enter the character "*"
-- Check the "Allow" box under "Effect"
-- Click "create"
-
-The policy has been created successfully
-
-![aws new policy](./graphics/iot-gateway-aws-new-policy.gif)
-
-### Creating a aws IoT Thing
+### Creating a new policy and thing for the aws IoT device
 
 In the aws IoT management console:
 
-- navigate to "Manage" -> "Things"
-- Click on "register a new thing"
-- CLick in "create a single thing"
-- Enter a name and click "Next"
-- Click "Create certificate", wait for the certificates to be created and download all to your local machine
-- Click in "Activate"
-- Click on "Attach a policy" and select the policy you created in the previous step
-- Click on "Register Thing"
+- navigate to "Manage" -> "All devices" -> "Things"
+- Click on "Create things"
+- Select "Create single thing" and then click "Next"
 
-The thing has been registered successfully
+![iot gateway create things](./graphics/iot-gateway-create-things.png)
 
-![aws new policy](./graphics/iot-gateway-aws-new-device.gif)
+- enter the Thing name
 
-### Setting up the IE Cloud Connector
+![iot gateway thing name](./graphics/iot-gateway-thing-name.png)
 
-Now that a IoT device is created in the aws cloud, the IE Cloud Connector can be set up.
+- Select "Auto-generate a new certificate (recommended)" and then click "Next"
 
-Launch the IE Cloud Connector Configurator for your IE Device.
+![iot gateway auto generate](./graphics/iot-gateway-auto-generate.png)
 
-- Click on "Edit Configuration"
-- Enter a Client ID e.g. `CCclient`, HostName: `ie-databus`, Port Number: `1883`
+- Click on "Create policy"
+- enter the Policy name
+- in the "Policy action" box choose an action one by one for `iot:Publish, iot:Connect`
+- in the "Policy resource" box enter the character "*"
+- in the "Policy effect" box check to "Allow"
+- Click "Create"
+
+![iot gateway create policy](./graphics/iot-gateway-create-policy.png)
+
+- check the policy created and then click "Create thing"
+
+![iot gateway create thing](./graphics/iot-gateway-create-thing.png)
+
+- download the certificate and private key
+
+![iot gateway certificate key](./graphics/iot-gateway-certificate-key.png)
+
+The thing has been registered successfully. Keep the certificate and private key for the Cloude Connector Configuration.
+
+### Setting up the Cloud Connector
+
+Now that a IoT device is created in the aws cloud, the Cloud Connector can be set up.
+
+Configure the Cloud Connector for Edge Management Data Connection
+
+- Under Adapters -> Click Add Topic
+- Check "User-defined Topic"
+- Enter a HostName: `ie-databus`, Port Number: `1883`, Username: `edge`, Password: `edge`
 - The Subscription Topic is the topic to which the Cloud Connector will subscribe to listen for data to publish to the cloud. E.g. `CloudConnector/#` . This means the Cloud Connector can subscribe to all topics starting with `CloudConnector/`
-- enter the Username and Password of the user you created during the databus setup
-
-The Bus Adaptor Configuration is now complete
-
 - Click "Add Topic" and enter a topic name, e.g `CloudConnector/toAWS` and click save. This topic must start with the name configured in the previous step.
-- Click on Add Route
-- enter a name for the route
 
-The last part is to configure the cloud connector client
+![iot gateway adapters](./graphics/iot-gateway-adapters.png)
+
+- Click on Add Route 
+- enter a name for the route `toAWS`
+
+![iot gateway route](./graphics/iot-gateway-route.png)
+
+The last part is to configure the cloud clients
 
 - Click on "Add Client"
-- Enter a Name e.g `awsClient` and choose `AWS` as type and click "save"
+- Enter a Name e.g `ccID` and choose `AWS` as type and click "save"
 - select the certificate and private key you downloaded when creating the aws thing
 - click on the edit symbol net to the client
 - enter a Client ID e.g `ccID`. This will be the ID used by the connector to publish data to the MQTT broker of the aws IoT device.
 - enter the hostname of the aws endpoint. You can find the address at the "Settings" section of the aws IoT console. It looks similar to this: `abcdefghi12345.iot.us-east.amazonaws.com`
 - enter `8883` as Port Number
 - enter Proxy settings if needed
-- Now select the route, check the box next to the bus adaptor topic `CloudConnector/toAWS` and check the box next to Cloud Connector Clients `awsClient`
-- click "save"
 
-![cc configurator setup](./graphics/iot-gateway-cc-configurator.gif)
+![iot gateway client configuration](./graphics/iot-gateway-client-configuration.png)
+![iot gateway client configuration advance](./graphics/iot-gateway-client-configuration-advance.png)
+
+- Now select the route, check the box next to the bus adaptor topic `CloudConnector/toAWS` and check the box next to Cloud Connector Clients `ccID`
+- click "save" and "Deploy"
+
+![iot gateway save deploy](./graphics/iot-gateway-save-deploy.png)
 
 Now every data published to the bus adaptor topic of the IE Databus will get published to the aws cloud.
 E.g. data published to the topic `CloudConnectot/toAWS` in the IE Databus will get published to the topic `CloudConnector/` of the aws IoT thing. The publish topic to which the IE Cloud Connector will publish the data in the aws cloud is set in the "Advanced" Tab of the IE Cloud Connector Client settings, the default value is `CloudConnector/`
@@ -108,10 +117,11 @@ E.g. data published to the topic `CloudConnectot/toAWS` in the IE Databus will g
 
 In the AWS IoT management console:
 
-- Navigate to "Manage" -> "Things" and select the thing you created
-- Click on "Activity" and "MQTT Client"
-- in "Subscribe to topic" enter the topic the Cloud Connector is publishing to. E.g. `CloudConnector/`
-- open the IE Flow Creator an publish some test data to the topic the Cloud Connector is subscribing to. E.g. `CloudConnector/toAWS`
+- Navigate to "Test" -> "MQTT test client"
+- in "Subscribe to a topic" enter the topic the Cloud Connector is publishing to. E.g. `CloudConnector/#`
+- open the Flow Creator an publish some test data to the topic the Cloud Connector is subscribing to. E.g. `CloudConnector/toAWS`
 - The data will be visible in the IoT management console
 
-![testing cc](./graphics/iot-gateway-test-aws.gif)
+![iot gateway mqtt test](./graphics/iot-gateway-mqtt-test.png)
+![iot gateway flowcreator](./graphics/iot-gateway-flowcreator.png)
+![iot gateway mqtt dataflow](./graphics/iot-gateway-mqtt-dataflow.png)
