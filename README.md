@@ -1,6 +1,6 @@
 # IoT gateway
 
-Using the IE system apps to preprocess PLC data and push it to the cloud
+Using the Industrial Edge system apps to preprocess PLC data and push it to the cloud
 
 - [IoT gateway](#iot-gateway)
   - [Description](#description)
@@ -19,7 +19,7 @@ Using the IE system apps to preprocess PLC data and push it to the cloud
 
 ## Description
 
-This example demonstrates how to use the Industrial Edge System Apps to read data from a PLC, preprocess it and to push  it to the cloud
+This example demonstrates how to use the Industrial Edge System Apps to read data from a PLC, preprocess it and push it to the cloud
 
 ### Overview
 
@@ -32,7 +32,7 @@ The Cloud Connector then reads this preprocessed data and publishes it to the AW
 
 ### General task
 
-To set up this example, the IE Databus, the SIMATIC S7 Connector and the Cloud Connector have to be configured.
+To set up this example, the Databus, the SIMATIC S7 Connector and the Cloud Connector have to be configured.
 
 ## Requirements
 
@@ -53,7 +53,7 @@ To set up this example, the IE Databus, the SIMATIC S7 Connector and the Cloud C
 
 - The Bottle filling example project is loaded to a PLC on which a OPC-UA server is running.
 - The minimum publishing interval and sampling interval of the OPC UA server of the PLC is set to 100ms
-- SIMATIC S7 Connector is installed on the industrial edge device (IED)
+- SIMATIC S7 Connector is installed on the Industrial Edge Device (IED)
 - Cloud Connector is installed on the IED
 - Flow Creator is installed on the IED
 - Access to AWS with permission to create IoT Devices and policies
@@ -70,9 +70,9 @@ Please refer to the [Installation](./docs/Installation.md) documentation
 
 ## Usage
 
-To publish preprocessed data of the PLC to the cloud, the Flow Creator is used to receive the data published to the databus by the SIMATIC S7 Connector, preprocess it and publish the result to the topic the Cloud Connector is listening to.
+To publish preprocessed data of the PLC to the cloud, the Flow Creator is used to receive the data published to the Databus by the SIMATIC S7 Connector, preprocess it and publish the result to the topic the Cloud Connector is listening to.
 
-In the bottle filling and the following flow, the filling level of the tank is used to calculate the flowrate of the tank filling which is then published to the aws IoT thing.
+In the bottle filling and the following flow, the filling level of the tank is used to calculate the flowrate of the tank filling which is then published to the AWS IoT thing.
 Configure the IE System Applications according to the [Installation](./docs/Installation.md) documentation and deploy the provided [flow](./src/iotGateway-flow.json) into the IE Flow creator. Before deploying the flow enter the user credentials configured in IE Databus in the MQTT-Node.
 
 ![bottlefilling example](./docs/graphics/iot-gateway-flow.png)
