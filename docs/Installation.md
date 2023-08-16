@@ -10,7 +10,7 @@
 
 ## Setting up the Databus
 
-In this example, two topics on the IE Databus are used.
+In this example, two topics on the Databus are used.
 
 The fist one is used by the OPC UA Connector to publish the data read from the PLC:
 For example: `ie/d/j/simatic/v1/opcuac1/dp/r/plc1/default`
@@ -18,7 +18,7 @@ For example: `ie/d/j/simatic/v1/opcuac1/dp/r/plc1/default`
 The second is used by the Cloud Connector to receive data which will then be published to the cloud.
 For example: `CloudConnector/toAWS`
 
-To set up a user with publish and subscribe permission, open the IE Databus Configurator for your device and set it up accordingly. In this example, a user `edge` has permission to publish and subscribe to `ie/#` and `CloudConnector/#`
+To set up a user with publish and subscribe permission, open the Databus Configurator for your device and set it up accordingly. In this example, a user `edge` has permission to publish and subscribe to `ie/#` and `CloudConnector/#`
 
 ![iot gateway databus setup](./graphics/iot-gateway-databus-setup.png)
 
@@ -36,7 +36,7 @@ Before starting the Cloud Connector Configurator, a new policy and a new device 
 
 ### Creating a new policy and thing for the AWS IoT device
 
-In the aws IoT management console:
+In the AWS IoT management console:
 
 - Navigate to "Manage" -> "All devices" -> "Things"
 - Click on "Create things"
@@ -109,8 +109,8 @@ The last part is to configure the cloud clients
 
 ![iot gateway save deploy](./graphics/iot-gateway-save-deploy.png)
 
-Now every data published to the bus adaptor topic of the IE Databus will get published to the aws cloud.
-E.g. data published to the topic `CloudConnectot/toAWS` in the IE Databus will get published to the topic `CloudConnector/` of the aws IoT thing. The publish topic to which the IE Cloud Connector will publish the data in the aws cloud is set in the "Advanced" Tab of the IE Cloud Connector Client settings, the default value is `CloudConnector/`
+Now every data published to the bus adaptor topic of the Databus will get published to the AWS Cloud.
+E.g. data published to the topic `CloudConnectot/toAWS` in the Databus will get published to the topic `CloudConnector/test` of the AWS IoT thing. The publish topic to which the Cloud Connector will publish the data in the AWS Cloud is set in the "Advanced" Tab of the Cloud Connector Client settings, the default value is `CloudConnector/test`
 
 ### Testing the Connection to the cloud
 
