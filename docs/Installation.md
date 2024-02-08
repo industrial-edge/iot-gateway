@@ -26,7 +26,8 @@ To set up a user with publish and subscribe permission, open the Databus Configu
 
 ![iot gateway opcua connector settings](./graphics/iot-gateway-opcuacon-settings.png)
 
-- Add your PLC as a data source *Important*: The choosen name (here: plc1) corresponds to the first topic name you will listen to. Remember to change the topicname correspondingly, otherwise you will not recieve the data (*ie/d/j/simatic/v1/opcuac1/dp/r/**plc1**/default*).
+- Add your PLC as a data source 
+  **Important**: The choosen name (here: plc1) corresponds to the first topic name you will listen to. Remember to change the topicname correspondingly, otherwise you will not recieve the data (*ie/d/j/simatic/v1/opcuac1/dp/r/**plc1**/default*).
 - Browse the tags and select  `GDB.externalSignals.tankSignals.actLevel` with a 100ms acquisition cycle (change this in the oper left corner).
 - Check the tag and press *deploy*.
 
