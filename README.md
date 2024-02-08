@@ -59,18 +59,8 @@ Furthermore an AWS IoT Devices has to be created.
 
 - The Bottle filling example project is loaded to a PLC on which a OPC-UA server is running
 - The minimum publishing interval and sampling interval of the OPC UA server of the PLC is set to 100ms
-- The following Apps are installed on the Industrial Edge Device (IED):
-  - Databus
-  - Common Import Converter
-  - IIH Registry Service
-  - IIH Essentials
-  - OPC UA Connector
-  - Cloud Connector
-  - Flow Creator 
-- The following Apps are installed on the Industrial Edge Management (IEM) in the *Application Manager* Platform:
-  - Databus Configurator 
-  - Common Connector Configurator 
-  - Cloud Connector Configurator 
+- The following Apps are installed on the Industrial Edge Device (IED): *Databus, Common Import Converter, IIH Registry Service, IIH Essentials, OPC UA Connector, Cloud Connector and Flow Creator* 
+- The following Apps are installed on the Industrial Edge Management (IEM) in the *Application Manager* Platform: *Databus Configurator, Common Connector Configurator and Cloud Connector Configurator* 
 - Access to AWS with permission to create IoT Devices and policies
 
 ### TIA Project
