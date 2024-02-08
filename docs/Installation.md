@@ -12,8 +12,8 @@
 
 In this example, two topics on the Databus are used.
 
-- `ie/d/j/simatic/v1/opcuac1/dp/r/plc1/default` (example name) This topic is used by the OPC UA Connector to publish the data read from the PLC.
-- `CloudConnector/toAWS` (example name) This topic is used by the Cloud Connector to receive data which will then be published to the cloud.
+- `ie/d/j/simatic/v1/opcuac1/dp/r/plc1/default`e.g. This topic is used by the OPC UA Connector to publish the data read from the PLC.
+- `CloudConnector/toAWS`e.g. This topic is used by the Cloud Connector to receive data which will then be published to the cloud.
 
 To set up a user with publish and subscribe permission, open the Databus Configurator for your device and set it up accordingly. In this example, a user `edge` has permission to publish and subscribe to `ie/#` and `CloudConnector/#`:
 
