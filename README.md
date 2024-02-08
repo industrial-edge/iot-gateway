@@ -25,11 +25,11 @@ This example demonstrates how to use the Industrial Edge System Apps to read dat
  <a href="docs/graphics/iot-gatewagit y-overview.png"><img src="docs/graphics/iot-gateway-overview.png" height="70%" width="70%" ></a> 
   <br>
 
-The OPC UA Connector is used to read status data from the PLC in a 100ms cycle and publishes it to the Databus.
+The **OPC UA Connector** is used to read status data from the PLC in a 100ms cycle and publishes it to the Databus.
 
-The Flow Creator is used to read the data and calculate the flow in m3/min and publish it back to the Databus.
+The **Flow Creator** is used to read the data and calculate the flow in m3/min and publish it back to the Databus.
 
-The Cloud Connector then reads this preprocessed data and publishes it to the AWS Cloud.
+The **Cloud Connector** then reads this preprocessed data and publishes it to the AWS Cloud.
 
 ### General task
 
