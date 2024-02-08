@@ -25,11 +25,11 @@ This example demonstrates how to use the Industrial Edge System Apps to read dat
  <a href="docs/graphics/iot-gatewagit y-overview.png"><img src="docs/graphics/iot-gateway-overview.png" height="70%" width="70%" ></a> 
   <br>
 
-The **OPC UA Connector** is used to read status data from the PLC in a 100ms cycle and publishes it to the Databus.
+The **OPC UA Connector** is used to read status data from the PLC in a 100ms cycle and publishes it to the **Databus**.
 
-The **Flow Creator** is used to read the data and calculate the flow in m3/min and publish it back to the Databus.
+The **Flow Creator** is used to read the data and calculate the flow in m3/min and publish it back to the **Databus**.
 
-The **Cloud Connector** then reads this preprocessed data and publishes it to the AWS Cloud.
+The **Cloud Connector** then reads this preprocessed data and publishes it to the **AWS Cloud**.
 
 ### General task
 
@@ -40,11 +40,11 @@ Furthermore an AWS IoT Devices has to be created.
 
 ### Used components
 
-- Industrial Edge Management (IEM) (V1.5.2-4 / V1.11.8) / v2.0.1-1 ??? **TODO**
+- Industrial Edge Management (IEM) v2.0.1-1 
   - Databus Configurator V2.3.2-2
   - Common Connector Configurator V1.9.1-1
   - Cloud Connector Configurator V1.17.0-3
-- Industrial Edge Virtual Device (IEVD) 1.16.1-1-a **TODO** <-IED-OS Version (runtime version: 1.16.1-1)
+- Industrial Edge Virtual Device (IEVD) 1.16.1-1 
   - Databus V2.3.1-2
   - Common Import Converter V2.1.0-2
   - IIH Registry Service V1.9.0-0
