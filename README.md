@@ -1,4 +1,4 @@
-# IoT gateway
+# IoT Gateway - PLC to Edge to AWS Cloud
 
 Using the Industrial Edge system apps to preprocess PLC data and push it to the cloud
 
