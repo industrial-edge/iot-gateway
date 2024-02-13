@@ -12,21 +12,26 @@
 
 In this example, two topics on the Databus are used.
 
-The fist one is used by the OPC UA Connector to publish the data read from the PLC:
-For example: `ie/d/j/simatic/v1/opcuac1/dp/r/plc1/default`
+- `ie/d/j/simatic/v1/opcuac1/dp/r/plc1/default`e.g. This topic is used by the OPC UA Connector to publish the data read from the PLC.
+- `CloudConnector/toAWS`e.g. This topic is used by the Cloud Connector to receive data which will then be published to the cloud.
 
-The second is used by the Cloud Connector to receive data which will then be published to the cloud.
-For example: `CloudConnector/toAWS`
-
-To set up a user with publish and subscribe permission, open the Databus Configurator for your device and set it up accordingly. In this example, a user `edge` has permission to publish and subscribe to `ie/#` and `CloudConnector/#`
+To set up a user with publish and subscribe permission, open the Databus Configurator for your device and set it up accordingly. In this example, a user `edge` has permission to publish and subscribe to `ie/#` and `CloudConnector/#`:
 
 ![iot gateway databus setup](./graphics/iot-gateway-databus-setup.png)
 
 ## Setting up the OPC UA Connector
 
-- Open the OPC UA Connector Configurator
-- Add your PLC as a data source
-- Browse the tags and select  `GDB_externalSignals_tankSignals_actLevel` with a 100ms acquisition cycle.
+- Open the OPC UA Connector Configurator.
+- Go to settings and enter your databus credentials.
+
+![iot gateway opcua connector settings](./graphics/iot-gateway-opcuacon-settings.png)
+
+- Add your PLC as a data source 
+  
+  **Important**: The choosen name *(here: **plc1**)* corresponds to the first topic name you will listen to. Remember to change the topicname correspondingly, otherwise you will not recieve the data (*ie/d/j/simatic/v1/opcuac1/dp/r/**plc1**/default*).
+
+- Browse the tags and select  `GDB.externalSignals.tankSignals.actLevel` with a 100ms acquisition cycle (change this in the oper left corner).
+- Check the tag and press *deploy*.
 
 ![iot gateway S7 connector setup](./graphics/iot-gateway-s7connector-setup.png)
 
@@ -36,7 +41,11 @@ Before starting the Cloud Connector Configurator, a new policy and a new device 
 
 ### Creating a new policy and thing for the AWS IoT device
 
-In the AWS IoT management console:
+To open the AWS IoT management console search for *IoT Device Management* and open it:
+
+![iot gateway AWS iotManagement](./graphics/iot-gateway-aws-iotmanagement.png)
+
+In the AWS IoT management console follow these steps:
 
 - Navigate to "Manage" -> "All devices" -> "Things"
 - Click on "Create things"
@@ -69,18 +78,18 @@ In the AWS IoT management console:
 
 ![iot gateway certificate key](./graphics/iot-gateway-certificate-key.png)
 
-The thing has been registered successfully. Keep the certificate and private key for the Cloude Connector Configuration.
+The thing has been registered successfully. Keep the certificate and private key for the Cloud Connector Configuration.
 
 ### Setting up the Cloud Connector
 
-Now that a IoT device is created in the aws cloud, the Cloud Connector can be set up.
+Now that an IoT device was created in the AWS cloud, the Cloud Connector can be set up.
 
 Configure the Cloud Connector for Edge Management Data Connection
 
-- Under Adapters -> Click Add Topic
-- Check "User-defined Topic"
-- Enter a HostName: `ie-databus`, Port Number: `1883`, Username: `edge`, Password: `edge`
-- The Subscription Topic is the topic to which the Cloud Connector will subscribe to listen for data to publish to the cloud. E.g. `CloudConnector/#` . This means the Cloud Connector can subscribe to all topics starting with `CloudConnector/`
+- Go to: Adapters -> Click *Add Topic*
+- Check *User-defined Topic*
+- Enter your HostName: `ie-databus`, Port Number: `1883`, Username: `edge`, Password: `edge`
+- The Subscription topic is the topic to which the Cloud Connector will subscribe to listen for data to publish to the cloud. E.g. `CloudConnector/#` . This means the Cloud Connector can subscribe to all topics starting with `CloudConnector/`.
 - Click "Add Topic" and enter a topic name, e.g `CloudConnector/toAWS` and click save. This topic must start with the name configured in the previous step.
 
 ![iot gateway adapters](./graphics/iot-gateway-adapters.png)
@@ -94,18 +103,18 @@ The last part is to configure the cloud clients
 
 - Click on "Add Client"
 - Enter a Name e.g `ccID` and choose `AWS` as type and click "save"
-- Select the certificate and private key you downloaded when creating the aws thing
+- Select the certificate and private key you downloaded when creating the AWS thing
 - Click on the edit symbol net to the client
-- Enter a Client ID e.g `ccID`. This will be the ID used by the connector to publish data to the MQTT broker of the aws IoT device.
-- Enter the hostname of the aws endpoint. You can find the address at the "Settings" section of the aws IoT console. It looks similar to this: `abcdefghi12345.iot.us-east.amazonaws.com`
+- Enter a Client ID e.g `ccID`. This will be the ID used by the connector to publish data to the MQTT broker of the AWS IoT device.
+- Enter the hostname of the AWS endpoint. You can find the address at the "Settings" section of the AWS IoT console. It looks similar to this: `abcdefghi12345.iot.us-east.amazonaws.com`
 - Enter `8883` as Port Number
 - Enter Proxy settings if needed
 
 ![iot gateway client configuration](./graphics/iot-gateway-client-configuration.png)
 ![iot gateway client configuration advance](./graphics/iot-gateway-client-configuration-advance.png)
 
-- Now select the route, check the box next to the bus adaptor topic `CloudConnector/toAWS` and check the box next to Cloud Connector Clients `ccID`
-- Click "save" and "Deploy"
+- Now select the route, check the box next to the bus adaptor topic `CloudConnector/toAWS` and check the box next to Cloud Connector Clients `ccID`.
+- Click "save Route" and "Deploy"
 
 ![iot gateway save deploy](./graphics/iot-gateway-save-deploy.png)
 
